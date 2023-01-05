@@ -8,7 +8,9 @@
 import UIKit
 
 final class WelcomeViewController: UIViewController {
-
+    
+    // MARK: - UI Elements
+    
     fileprivate let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -22,6 +24,7 @@ final class WelcomeViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Sign Up", for: .normal)
         button.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        button.addTarget(nil, action: #selector(handleSignUp), for: .touchUpInside)
         return button
     }()
     
@@ -30,8 +33,11 @@ final class WelcomeViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Sign In", for: .normal)
         button.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        button.addTarget(nil, action: #selector(handleSignIn), for: .touchUpInside)
         return button
     }()
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,12 +49,21 @@ final class WelcomeViewController: UIViewController {
         layout()
     }
 
+    // MARK: - Methods
     fileprivate func layout() {
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40)
         ])
+    }
+    
+    @objc fileprivate func handleSignUp() {
+        navigationController?.pushViewController(SignUpViewController(), animated: true)
+    }
+    
+    @objc fileprivate func handleSignIn() {
+        navigationController?.pushViewController(LoginViewController(), animated: true)
     }
 }
 
