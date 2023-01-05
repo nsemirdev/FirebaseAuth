@@ -22,11 +22,11 @@ final class LoginViewController: UIViewController {
         UITextField.make(with: "Password"),
     ]
     
-    fileprivate let signInButton: UIButton = {
+    fileprivate let loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        button.setTitle("Sign Up", for: .normal)
+        button.setTitle("Login", for: .normal)
         return button
     }()
     
@@ -42,7 +42,7 @@ final class LoginViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(stackView)
         textFields.forEach { stackView.addArrangedSubview($0) }
-        stackView.addArrangedSubview(signInButton)
+        stackView.addArrangedSubview(loginButton)
         stackView.addArrangedSubview(errorLabel)
         
         layout()
