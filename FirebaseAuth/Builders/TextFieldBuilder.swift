@@ -12,10 +12,16 @@ extension UITextField {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        textField.layer.cornerRadius = 4
         textField.placeholder = placeholder
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.secondaryLabel.cgColor
+        textField.borderStyle = .none
+
         return textField
+    }
+    
+    func style() {
+        let bottomLine = CALayer()
+        bottomLine.frame = .init(x: 0, y: frame.height - 2, width: frame.width, height: 2)
+        bottomLine.backgroundColor = UIColor.init(red: 48/255, green: 173/255, blue: 99/255, alpha: 1).cgColor
+        layer.addSublayer(bottomLine)
     }
 }

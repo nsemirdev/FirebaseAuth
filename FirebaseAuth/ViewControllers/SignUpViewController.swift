@@ -50,6 +50,11 @@ final class SignUpViewController: UIViewController {
         layout()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        textFields.forEach { $0.style() }
+    }
+    
     fileprivate func layout() {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
